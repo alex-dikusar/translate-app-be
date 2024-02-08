@@ -13,7 +13,6 @@
     "lint": "eslint \"{src,test}/**/*.{js,ts}\"",
     "lint:fix": "eslint --fix \"{src,test}/**/*.{js,ts}\"",
     "lint-staged": "lint-staged",
-    "prepare": "husky install",
     "prettier:write": "prettier --write .",
     "prettier:check": "prettier --check .",
     "test": "jest",
@@ -28,8 +27,11 @@
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^10.3.2",
     "@nestjs/platform-express": "^10.3.2",
+    "@nestjs/typeorm": "^10.0.2",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",
