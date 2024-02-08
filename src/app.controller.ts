@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ROUTE_SEARCH } from './routes';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get(ROUTE_SEARCH)
+  getSearchResult() {
+    return this.appService.getSearchResult();
   }
 }
