@@ -1,13 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, Column, PrimaryColumn, ManyToOne } from 'typeorm';
+import { Entry } from './entry.entity';
 
 @Entity()
-export class ExampleEntity {
-  @PrimaryGeneratedColumn()
-  ID: number;
+export class Example {
+  @PrimaryColumn()
+  id: number;
 
   @Column()
-  MelingoID: number;
+  melingoId: number;
 
   @Column()
-  Text: string;
+  text: string;
+
+  @ManyToOne(() => Entry, (entry) => entry.examples, {
+    createForeignKeyConstraints: false,
+  })
+  melingo: Entry;
 }

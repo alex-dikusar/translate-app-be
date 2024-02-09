@@ -1,16 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { EntryEntity } from '../entities';
+import { Entry } from '../entities';
 
 @Injectable()
 export class SearchService {
   constructor(
-    @InjectRepository(EntryEntity)
-    private readonly entriesRepository: Repository<EntryEntity>,
+    @InjectRepository(Entry)
+    private readonly entriesRepository: Repository<Entry>,
   ) {}
 
-  async getAllEntries(): Promise<EntryEntity[]> {
-    return this.entriesRepository.find();
+  async getEntry(searchQuery: string): Promise<Entry[]> {
+    return this.entriesRepository
+      .createQueryBuilder()
+      .select()
+      .where('entry ILIKE :searchQuery', { searchQuery: `%${searchQuery}%` })
+      .getMany();
   }
 }

@@ -1,16 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
+import { Example } from './example.entity';
 
 @Entity()
-export class EntryEntity {
-  @PrimaryGeneratedColumn()
-  Melingoid: number;
+export class Entry {
+  @PrimaryColumn()
+  id: number;
 
   @Column()
-  Pos: number;
+  pos: number;
 
   @Column()
-  Entry: string;
+  entry: string;
 
   @Column()
-  TranslationFull: string;
+  translationFull: string;
+
+  @OneToMany(() => Example, (example) => example.melingo)
+  examples: Example[];
 }
