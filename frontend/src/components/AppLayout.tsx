@@ -1,26 +1,15 @@
-import React, { ReactNode } from 'react';
 import Container from '@mui/material/Container';
-import Stack, { StackProps } from '@mui/material/Stack';
+import Stack from '@mui/material/Stack';
 import Header from './Header';
+import SearchResult from './SearchResult';
 
-type Props = {
-  children?: ReactNode;
-};
-
-const contentStyle: StackProps = {
-  direction: 'row',
-  flex: 1,
-  height: '100%',
-  overflow: 'hidden',
-};
-
-function AppLayout({ children, ...rest }: Props) {
+function AppLayout() {
   return (
-    <Stack height="100%" {...rest}>
+    <Stack data-testid="app-layout" height="100%">
       <Header />
-      <Stack {...contentStyle}>
-        <Container>{children}</Container>
-      </Stack>
+      <Container>
+        <SearchResult />
+      </Container>
     </Stack>
   );
 }

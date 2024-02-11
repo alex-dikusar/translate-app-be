@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders app layout', () => {
   render(<App />);
 
-  expect(screen.getByText('App Layout')).toBeInTheDocument();
+  expect(screen.getByTestId('app-layout')).toBeInTheDocument();
 });
