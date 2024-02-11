@@ -2,8 +2,8 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { parseCsv } from '../src/utils';
 import { Entry } from '../src/entities';
 
-const entryCsvPath = 'csv/Entries.csv';
-export const entryTableName = 'entry';
+const csvPath = process.env.DB_CSV_PATH_ENTRIES;
+const tableName = process.env.DB_TABLE_NAME_ENTRIES;
 
 const columns = [
   { name: 'id', type: 'integer', isPrimary: true },
@@ -14,13 +14,13 @@ const columns = [
 
 export class EntryInit1707497335826 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    const table = new Table({ name: entryTableName, columns });
-    const rows = await parseCsv(entryCsvPath);
+    const table = new Table({ name: tableName, columns });
+    const rows = await parseCsv(csvPath);
     await queryRunner.createTable(table, true);
     await queryRunner.manager.getRepository(Entry).save(rows, { chunk: 100 });
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable(entryTableName);
+    await queryRunner.dropTable(tableName);
   }
 }

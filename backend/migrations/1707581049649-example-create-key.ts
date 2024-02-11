@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, TableForeignKey } from 'typeorm';
-import { entryTableName } from './1707497335826-entry-init';
-import { exampleTableName } from './1707497413407-example-init';
+
+const entryTableName = process.env.DB_TABLE_NAME_ENTRIES;
+const exampleTableName = process.env.DB_TABLE_NAME_EXAMPLES;
 
 const foreignKey = new TableForeignKey({
   columnNames: ['melingoId'],

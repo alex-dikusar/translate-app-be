@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Entry } from './types';
 
 const SEARCH_API_KEY = 'search';
+const SEARCH_API_URL = '/search';
 
 export const searchApi = createApi({
   reducerPath: SEARCH_API_KEY,
@@ -9,7 +10,7 @@ export const searchApi = createApi({
   endpoints: ({ query }) => ({
     getSearchResult: query<Entry[], string | undefined>({
       query: (searchStr) => ({
-        url: `?search=${searchStr}`,
+        url: `${SEARCH_API_URL}?word=${searchStr}`,
       }),
     }),
   }),

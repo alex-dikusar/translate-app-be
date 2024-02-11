@@ -12,8 +12,6 @@ export class Example {
   @Column()
   text: string;
 
-  @ManyToOne(() => Entry, (entry) => entry.examples, {
-    createForeignKeyConstraints: false,
-  })
+  @ManyToOne(() => Entry, (entry) => entry.examples)
   melingo: Entry;
 }

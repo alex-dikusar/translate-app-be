@@ -1,14 +1,14 @@
 import { MigrationInterface, QueryRunner, TableIndex } from 'typeorm';
-import { entryTableName } from './1707497335826-entry-init';
 
+const tableName = process.env.DB_TABLE_NAME_ENTRIES;
 const entryIndex = new TableIndex({ columnNames: ['entry'] });
 
 export class EntryIndex1707584341202 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.createIndex(entryTableName, entryIndex);
+    queryRunner.createIndex(tableName, entryIndex);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.dropIndex(entryTableName, entryIndex);
+    queryRunner.dropIndex(tableName, entryIndex);
   }
 }
