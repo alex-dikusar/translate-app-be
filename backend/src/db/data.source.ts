@@ -1,6 +1,7 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { config } from 'dotenv';
+import { ENTITIES_PATH, MIGRATIONS_PATH } from './constants';
 
 config();
 
@@ -11,8 +12,8 @@ export const dbDataSource: DataSourceOptions = {
   password: process.env.DB_PASSWORD,
   username: process.env.DB_USER,
   database: process.env.DB_NAME,
-  entities: [process.env.DB_ENTITIES_PATH],
-  migrations: [process.env.DB_MIGRATIONS_PATH],
+  entities: [ENTITIES_PATH],
+  migrations: [MIGRATIONS_PATH],
   synchronize: false,
   migrationsRun: false,
 };

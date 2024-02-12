@@ -1,7 +1,8 @@
 import { Entity, Column, PrimaryColumn, ManyToOne } from 'typeorm';
 import { Entry } from './entry.entity';
+import { TABLE_NAME_EXAMPLES } from './constants';
 
-@Entity()
+@Entity({ name: TABLE_NAME_EXAMPLES })
 export class Example {
   @PrimaryColumn()
   id: number;

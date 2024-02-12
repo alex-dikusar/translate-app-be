@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
-import { SEARCH_ROUTE } from '../constants';
+import { SEARCH_ROUTE } from './constants';
 
 @Controller()
 export class SearchController {

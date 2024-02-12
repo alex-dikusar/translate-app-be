@@ -1,14 +1,14 @@
-import { MigrationInterface, QueryRunner, TableIndex } from 'typeorm';
-
-const tableName = process.env.DB_TABLE_NAME_ENTRIES;
-const entryIndex = new TableIndex({ columnNames: ['entry'] });
+import { MigrationInterface, QueryRunner } from 'typeorm';
+import { TABLE_NAME_ENTRIES, TABLE_ENTRIES_INDEX } from '../src/entities';
 
 export class EntryIndex1707584341202 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.createIndex(tableName, entryIndex);
+    await queryRunner.query(
+      `CREATE INDEX ${TABLE_ENTRIES_INDEX} ON ${TABLE_NAME_ENTRIES} (entry);`,
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.dropIndex(tableName, entryIndex);
+    await queryRunner.query(`DROP INDEX IF EXISTS ${TABLE_ENTRIES_INDEX}`);
   }
 }

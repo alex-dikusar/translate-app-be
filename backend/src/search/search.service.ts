@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Entry } from '../entities';
-import { SEARCH_LIMIT } from '../constants';
+import { SEARCH_LIMIT } from './constants';
 
 @Injectable()
 export class SearchService {
@@ -15,7 +15,7 @@ export class SearchService {
     return this.entriesRepository
       .createQueryBuilder('entry')
       .leftJoinAndSelect('entry.examples', 'example')
-      .where('entry ILIKE :searchQuery', { searchQuery: `%${searchQuery}%` })
+      .where(`entry ILIKE :searchQuery`, { searchQuery: `%${searchQuery}%` })
       .take(SEARCH_LIMIT)
       .getMany();
   }

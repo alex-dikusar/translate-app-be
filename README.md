@@ -8,7 +8,7 @@
 
 ## Assumptions:
 
-Columns are slightly renamed.
+Columns in original CSVs are slightly renamed for getting straightforward consistency with test application database columns structure.
 
 Entries table:
 - `MelingoId` to `id`
