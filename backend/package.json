@@ -15,12 +15,6 @@
     "lint-staged": "lint-staged",
     "prettier:write": "prettier --write .",
     "prettier:check": "prettier --check .",
-    "test": "jest",
-    "test:ci": "cross-env CI=true jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "npm run build && npx typeorm -d dist/src/db/data.source.js",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli migration:create ./migrations/$npm_config_name"
